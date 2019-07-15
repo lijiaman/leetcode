@@ -1,2 +1,5 @@
-# leetcode
-Practicing makes perfect.
+# Leetcode Python Solutions
+Practice makes perfect.
+
+
+
