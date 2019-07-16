@@ -1,4 +1,4 @@
-# 1.1 DP1
+# 1. DP
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         dp = [False] * len(s)
@@ -10,10 +10,8 @@ class Solution:
 
         return dp[-1]
 
-# 1.2 DP2
+# 2. DFS (To Do)
 
-# 2. DFS
+# 3. BFS (To Do)
 
-# 3. BFS
-
-# 4. Trie
+# 4. Trie (To Do)

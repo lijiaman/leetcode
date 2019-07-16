@@ -1,9 +1,7 @@
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+# Bit Manipulation
+# Space: O(1)
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
         res = nums[0]
         for i in range(1, len(nums)):
             res = res ^ nums[i]

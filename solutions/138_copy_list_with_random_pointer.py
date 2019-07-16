@@ -7,7 +7,7 @@ class Node:
         self.random = random
 """
 
-
+# 0. My original ugly solution
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         if not head:
@@ -35,3 +35,56 @@ class Solution:
             p_r = p_r.next
 
         return data_dict[head]
+
+# 1. Updated version with dictionary
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
+
+        data_dict = {}
+        p = head
+        while p:
+            data_dict[p] = Node(p.val, None, None)
+            p = p.next
+
+        p = head
+        while p:
+            if p.next:
+                data_dict[p].next = data_dict[p.next]
+            if p.random:
+                data_dict[p].random = data_dict[p.random]
+            p = p.next
+
+        return data_dict[head]
+
+# 2. Not using dictionary
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
+
+        p = head
+        while p:
+            node = Node(p.val, None, None)
+            node.next = p.next
+            p.next = node
+            p = p.next.next
+
+        p = head
+        while p:
+            node = p.next
+            if p.random:
+                node.random = p.random.next
+            p = p.next.next
+
+        p = head
+        start = head.next
+        while p and p.next:
+            node = p.next
+            p.next = p.next.next
+            if p.next:
+                node.next = p.next.next
+            p = p.next
+
+        return start

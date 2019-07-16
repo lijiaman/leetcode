@@ -1,9 +1,6 @@
 ### Notice dequeue is much faster than list! with list as queue, got TLE!
-
-
+# BFS
 import collections
-
-
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         wordList = set(wordList)

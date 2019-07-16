@@ -1,3 +1,4 @@
+# 1. DFS
 class Solution:
     def isPalindrome(self, str):
         if len(str) == 1:
@@ -6,6 +7,7 @@ class Solution:
             if str[i] != str[len(str) - 1 - i]:
                 return False
         return True
+        # More concise: return s == s[::-1]
 
     def dfs(self, str, res_list, final_list):
         if len(str) == 0:

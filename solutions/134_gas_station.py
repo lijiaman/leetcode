@@ -1,5 +1,4 @@
-## Need to optimize!
-
+# 0. My original ugly version. Need to optimize!
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         diff = [0] * len(gas)
@@ -24,4 +23,22 @@ class Solution:
                     return k
 
         return -1
+
+# 1. More concise version
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        if sum(gas) < sum(cost):
+            return -1
+
+        remain = 0
+        pos = 0
+        for i in range(len(gas)):
+            remain += gas[i] - cost[i]
+            if remain < 0:
+                pos = i + 1
+                remain = 0
+
+        return pos
+
+
 
