@@ -1,17 +1,15 @@
-## Essentially preorder traversal
-
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
-    def flatten(self, root):
+# 1. Stack
+class Solution:
+    def flatten(self, root: TreeNode) -> None:
         """
-        :type root: TreeNode
-        :rtype: None Do not return anything, modify root in-place instead.
+        Do not return anything, modify root in-place instead.
         """
         if root is None:
             return None
@@ -30,4 +28,40 @@ class Solution(object):
 
             prev_node = node
 
-        return dummy.right
+# 2. Recursive Solution
+class Solution:
+    def __init__(self):
+        self.prev = None
+
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        if not root:
+            return root
+        self.flatten(root.right)
+        self.flatten(root.left)
+
+        root.right = self.prev
+        root.left = None
+        self.prev = root
+
+# 3. Iterative Solution, O(1) space (*)
+class Solution:
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        if not root:
+            return root
+        while root:
+            if root.left:
+                node = root.left
+                while node.right:
+                    node = node.right
+                node.right = root.right
+                root.right = root.left
+                root.left = None
+            root = root.right
+
+

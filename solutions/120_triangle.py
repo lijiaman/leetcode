@@ -1,3 +1,4 @@
+# DP
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         for i in range(1, len(triangle)):
