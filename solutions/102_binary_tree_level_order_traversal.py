@@ -1,19 +1,27 @@
-def levelOrder(self, root: TreeNode) -> List[List[int]]:
-    if root is None:
-        return []
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-    res_list = []
-    queue = [root]
-    while len(queue) > 0:
-        curr_level = []
-        size = len(queue)
-        for i in range(size):
-            node = queue.pop(0)
-            curr_level.append(node.val)
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-        res_list.append(curr_level)
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if root is None:
+            return []
 
-    return res_list
+        res_list = []
+        queue = [root]
+        while len(queue) > 0:
+            curr_level = []
+            size = len(queue)
+            for i in range(size):
+                node = queue.pop(0)
+                curr_level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res_list.append(curr_level)
+
+        return res_list

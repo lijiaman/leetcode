@@ -11,6 +11,7 @@
 #         self.left = None
 #         self.right = None
 
+# 1. Recursive, top-down approach
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         if not head:
@@ -31,3 +32,7 @@ class Solution:
         mid_node.right = self.sortedListToBST(next_p.next)
 
         return mid_node
+
+# 2. Recursive, bottom-up approach(To Do)
+
+# 3. Convert to array for building tree(To Do)
